@@ -14,8 +14,8 @@
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::post('/login', 'AuthController@login')->name('login');
-Route::get('/logout', 'AuthController@logout')->name('logout');
+Route::post('/login', 'AuthController@login')->name('login')->middleware('guest');
+Route::get('/logout', 'AuthController@logout')->name('logout')->middleware('auth');
 
 Route::group(['as' => 'announcement.'], function() {
     Route::group(['middleware' =>['auth']], function() {
