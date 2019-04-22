@@ -8,7 +8,7 @@
                 <a href="{{route('announcement.edit', $announcement->id)}}" class="btn btn-info mr-2">Edit</a>
                 @if(Auth::id() === $announcement->user->id)
                     {{Form::open(['route' => ['announcement.delete', $announcement->id], 'method' => 'POST'])}}
-                        {{Form::submit('Delete ad', ['class' => 'btn btn-danger'])}}
+                    {{Form::submit('Delete ad', ['class' => 'btn btn-danger'])}}
                     {{Form::close()}}
                 @endif
             </div>

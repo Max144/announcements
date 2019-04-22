@@ -20,9 +20,9 @@ class AuthController extends Controller
         $name = $request->name;
 
         if (User::where('name', $name)->count()) {
-            if(Auth::attempt(['name' => $name, 'password' => $pasword])){
+            if (Auth::attempt(['name' => $name, 'password' => $pasword])) {
                 $responseData = ['alert_class' => 'success', 'message' => "Вы вошли как {$name}"];
-            }else{
+            } else {
                 $responseData = ['alert_class' => 'danger', 'message' => "Неверный пароль"];
             }
         } else {

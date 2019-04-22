@@ -9,6 +9,7 @@ use phpDocumentor\Reflection\Types\Self_;
 class HomeController extends Controller
 {
     const PER_PAGE = 5;
+
     /**
      * Show the application dashboard.
      *

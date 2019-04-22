@@ -26,7 +26,7 @@ class AnnouncementController extends Controller
             'description' => 'required|string',
         ]);
 
-        $announcement = Auth::user()->announcements()->create($request->only(['title','description']));
+        $announcement = Auth::user()->announcements()->create($request->only(['title', 'description']));
 
         return redirect()->route('announcement.show', $announcement->id);
     }
@@ -45,7 +45,7 @@ class AnnouncementController extends Controller
         ]);
 
         $announcement = Announcement::findOrFail($id);
-        $announcement->update($request->only(['title','description']));
+        $announcement->update($request->only(['title', 'description']));
 
         return redirect()->route('announcement.show', $announcement->id);
     }
