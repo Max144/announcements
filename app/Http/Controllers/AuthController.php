@@ -14,6 +14,11 @@ class AuthController extends Controller
         $request->validate([
             'name' => 'required|string|max:255|min:3',
             'password' => 'required|string|max:255|min:3',
+        ], [
+            'required' => ':attribute field is required',
+            'string' => ':attribute field must be string',
+            'max' => ':attribute field must contain no more then :max characters',
+            'min' => ':attribute field must contain at least :min characters',
         ]);
 
         $pasword = $request->password;

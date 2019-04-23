@@ -6,22 +6,19 @@
             <div class="text-center mt-3">
                 <h2><a href="{{route('announcement.show', $announcement->id)}}"> {{$announcement->title}} </a></h2>
             </div>
-            @auth
+            @if(Auth::id() === $announcement->user->id)
                 <div class="row justify-content-end">
                     <div class="p-3">
                         <a href="{{route('announcement.edit', $announcement->id)}}" class="btn btn-info">Edit</a>
                     </div>
+                    <div class="p-3">
+                        {{Form::open(['route' => ['announcement.delete', $announcement->id], 'method' => 'POST'])}}
+                        {{Form::submit('Delete ad', ['class' => 'btn btn-danger'])}}
+                        {{Form::close()}}
+                    </div>
 
-
-                    @if(Auth::id() === $announcement->user->id)
-                        <div class="p-3">
-                            {{Form::open(['route' => ['announcement.delete', $announcement->id], 'method' => 'POST'])}}
-                            {{Form::submit('Delete ad', ['class' => 'btn btn-danger'])}}
-                            {{Form::close()}}
-                        </div>
-                    @endif
                 </div>
-            @endauth
+            @endif
             <div class="row p-5">
                 {{$announcement->description}}
             </div>

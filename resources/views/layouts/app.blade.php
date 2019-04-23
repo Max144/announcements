@@ -25,11 +25,19 @@
         {{Form::open(['route' => 'login', 'method' => 'POST', 'class' => 'form-inline'])}}
         {{Form::text('name','', ['required', 'class' => 'form-control mr-sm-2'])}}
         {{Form::password('password', ['required', 'class' => 'form-control mr-sm-2'])}}
-        {{Form::submit('Login', ['class' => 'form-control mr-sm-2'])}}
+        {{Form::submit('Login', ['class' => 'form-control mr-sm-2 ml-3'])}}
         {{Form::close()}}
     @endauth
 </nav>
 
+@foreach($errors->all() as $error)
+    <div class="alert alert-dismissible fade show alert-danger" role="alert">
+        {{$error}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+@endforeach
 @if(session('alert_class'))
     <div class="alert alert-dismissible fade show alert-{{session('alert_class')}}" role="alert">
         {{session('message')}}

@@ -2,15 +2,14 @@
 
 @section('content')
 
-    @if(Auth::check())
+    @if(Auth::id() === $announcement->user->id)
         <div class="container-fluid">
             <div class="custom-control-inline pr-3 pt-3 float-right">
                 <a href="{{route('announcement.edit', $announcement->id)}}" class="btn btn-info mr-2">Edit</a>
-                @if(Auth::id() === $announcement->user->id)
-                    {{Form::open(['route' => ['announcement.delete', $announcement->id], 'method' => 'POST'])}}
-                    {{Form::submit('Delete ad', ['class' => 'btn btn-danger'])}}
-                    {{Form::close()}}
-                @endif
+
+                {{Form::open(['route' => ['announcement.delete', $announcement->id], 'method' => 'POST'])}}
+                {{Form::submit('Delete ad', ['class' => 'btn btn-danger'])}}
+                {{Form::close()}}
             </div>
         </div>
     @endif
