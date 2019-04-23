@@ -62,6 +62,11 @@ class AnnouncementController extends Controller
 
 
         $announcement = Announcement::findOrFail($id);
+        if(Auth::id() != $announcement->user->id)
+            return redirect()->route('home')->with([
+                'alert_class' => 'danger',
+                'message' => "You can edit only your announcements!"
+            ]);
         $announcement->update($request->only(['title', 'description']));
 
         return redirect()->route('announcement.show', $announcement->id);
