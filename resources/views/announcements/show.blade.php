@@ -22,7 +22,7 @@
 
     <div class="container-fluid p-5">
         <div class="col-10 text-left pl-5 pr-5">
-            <p style="font-size: 20px;">{{$announcement->description}}</p>
+            <p style="font-size: 20px;">{!! $announcement->raw_description!!} </p>
         </div>
     </div>
 

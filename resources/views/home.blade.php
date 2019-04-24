@@ -20,7 +20,7 @@
                 </div>
             @endif
             <div class="row p-5">
-                {{$announcement->description}}
+                {!! $announcement->raw_description!!}
             </div>
             <div class="col-12 p-5 text-right">
                 by {{$announcement->user->name}}, {{$announcement->created_at}}

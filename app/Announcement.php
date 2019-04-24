@@ -18,4 +18,9 @@ class Announcement extends Model
     {
         return Carbon::parse($val)->format('j F Y');
     }
+
+    public function getRawDescriptionAttribute()
+    {
+        return nl2br(str_replace(' ', '&nbsp;', e($this->description)));
+    }
 }
